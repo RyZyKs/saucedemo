@@ -1,0 +1,9 @@
+# dependencies
+node_modules
+
+# cypress
+videos
+screenshots
+
+# misc
+.DS_Store

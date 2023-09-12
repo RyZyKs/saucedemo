@@ -1,0 +1,16 @@
+{
+  "name": "saucedemo",
+  "version": "1.0.0",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Przemyslaw Gierada",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/cypress": "^1.1.3",
+    "cypress": "^12.17.4"
+  }
+}
