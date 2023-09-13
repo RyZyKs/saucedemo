@@ -15,7 +15,6 @@ class LoginPage {
     lockedUserError = "Epic sadface: Sorry, this user has been locked out.";
     nonExistingUserError = "Epic sadface: Username and password do not match any user in this service";
 
-
     //--------------------------------------------------------
     // Functions.
     //--------------------------------------------------------
@@ -44,6 +43,15 @@ class LoginPage {
      */
     submitLogin(): void {
       cy.get(this.LOGIN_BUTTON).click()
+    }
+
+    /**
+     * This function enters user's name string into input.
+     *
+     * @param {string} username - The user's name.
+     */
+    checkIfPageIsOpened(): void {
+      cy.get('.login_logo').contains('Swag Labs').should('be.visible');
     }
 }
 
