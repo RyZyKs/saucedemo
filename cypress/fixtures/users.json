@@ -11,6 +11,10 @@
     "username": "non_existing_user",
     "password": "secret_sauce"
   },
+  "userWithWrongPassword": {
+    "username": "standard_user",
+    "password": "secret_sauces"
+  },
   "problemUser": {
     "username": "problem_user",
     "password": "secret_sauce"
