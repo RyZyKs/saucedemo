@@ -61,16 +61,20 @@ describe("Login Test Suite", () => {
   });
 
   it("Log in without credentials", () => {
-    cy.login("", "");
+    LoginPage.submitLogin();
     cy.get(LoginPage.ERROR_HINT)
       .should("be.visible")
       .contains(LoginPage.requiredUsernameError);
   });
 
   it("Log in without password", () => {
-    cy.login("", "");
-    cy.get(LoginPage.ERROR_HINT)
-      .should("be.visible")
-      .contains(LoginPage.requiredPasswordError);
+    cy.fixture("users.json").then((users) => {
+      const stdUser = users.stdUser;
+      LoginPage.enterUsername(stdUser.username);
+      LoginPage.submitLogin();
+      cy.get(LoginPage.ERROR_HINT)
+        .should("be.visible")
+        .contains(LoginPage.requiredPasswordError);
+    });
   });
 });

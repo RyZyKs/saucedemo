@@ -1,4 +1,5 @@
 import LoginPage from "./LoginPage";
+import InventoryPage from "./InventoryPage";
 
 class BurgerMenu {
   //--------------------------------------------------------
@@ -19,6 +20,7 @@ class BurgerMenu {
    * This function logs out the user.
    */
   logout(): void {
+    cy.get(InventoryPage.BURGER_MENU_DROPDOWN).click();
     cy.get(this.LOGOUT_LINK).click();
     LoginPage.checkIfPageIsOpened();
   }
