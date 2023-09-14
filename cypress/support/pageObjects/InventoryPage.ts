@@ -29,14 +29,23 @@ class InventoryPage {
   }
 
   /**
+   * This function moves user to the cart page.
+   */
+  moveToCart() {
+    cy.get(this.SHOPPING_CART_LINK).click();
+    cy.get("#header_container").should("be.visible").and("contain", "Your Cart");
+    cy.url().should("eq", "https://www.saucedemo.com/cart.html");
+  }
+
+  /**
    * This function sorts the products form A to Z and then validate if it's sorted correctly.
    */
-  sortByNameAtoZ () {
+  sortByNameAtoZ() {
     cy.get('[data-test="product_sort_container"]')
       .should("be.visible")
       .and("contain", "Name (A to Z)")
       .select("Name (A to Z)");
-  
+
     const productTable: string[] = [];
     const manuallySortedTable: string[] = [
       "Sauce Labs Backpack",
@@ -46,24 +55,26 @@ class InventoryPage {
       "Sauce Labs Onesie",
       "Test.allTheThings() T-Shirt (Red)",
     ];
-  
+
     cy.get(".inventory_item")
       .each(($product) => {
         const productName = $product.find(".inventory_item_name").text().trim();
-  
+
         productTable.push(productName);
       })
       .then(() => {
-        const sortedTable = [...productTable].sort((a, b) => a.localeCompare(b));
+        const sortedTable = [...productTable].sort((a, b) =>
+          a.localeCompare(b)
+        );
         expect(sortedTable).to.deep.equal(manuallySortedTable);
-  
+
         // for debugging
         const sortedTableString = sortedTable.join(", ");
         const manuallySortedTableString = manuallySortedTable.join(", ");
         cy.log("Sorted Table: " + sortedTableString);
         cy.log("Manually Sorted Table: " + manuallySortedTableString);
       });
-  };
+  }
 }
 
 export default new InventoryPage();
