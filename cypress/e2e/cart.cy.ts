@@ -12,7 +12,7 @@ describe("Cart Test Suite", () => {
     });
   });
 
-  it("Add product to cart and check overview", () => {
+  it("Add product to cart and check overview, then remove items", () => {
     cy.fixture("products.json").then((products) => {
       const backpack = products.backpack;
       const bikeLight = products.bikeLight;
@@ -29,12 +29,18 @@ describe("Cart Test Suite", () => {
       cy.addProductToCart(InventoryPage.TEST_ALL);
       cy.get(InventoryPage.SHOPPING_CART_LINK).contains(6);
       InventoryPage.moveToCart();
-      CartPage.checkIfProductIsListedOnTheList(backpack.name);
-      CartPage.checkIfProductIsListedOnTheList(bikeLight.name);
-      CartPage.checkIfProductIsListedOnTheList(boltShirt.name);
-      CartPage.checkIfProductIsListedOnTheList(fleeceJacket.name);
-      CartPage.checkIfProductIsListedOnTheList(onesie.name);
-      CartPage.checkIfProductIsListedOnTheList(test.name);
+      cy.checkIfProductIsListedOnTheList(backpack.name);
+      cy.checkIfProductIsListedOnTheList(bikeLight.name);
+      cy.checkIfProductIsListedOnTheList(boltShirt.name);
+      cy.checkIfProductIsListedOnTheList(fleeceJacket.name);
+      cy.checkIfProductIsListedOnTheList(onesie.name);
+      cy.checkIfProductIsListedOnTheList(test.name);
+      cy.removeProductFromCart(InventoryPage.BACKPACK, "cart");
+      cy.removeProductFromCart(InventoryPage.BOLT_SHIRT, "cart");
+      cy.removeProductFromCart(InventoryPage.ONESIE, "cart");
+      cy.removeProductFromCart(InventoryPage.BIKE_LIGHT, "cart");
+      cy.removeProductFromCart(InventoryPage.FLEECE_JACKET, "cart");
+      cy.removeProductFromCart(InventoryPage.TEST_ALL, "cart");
     });
   });
 

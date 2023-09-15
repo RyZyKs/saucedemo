@@ -19,12 +19,12 @@ describe("Inventory Test Suite", () => {
     cy.addProductToCart(InventoryPage.FLEECE_JACKET);
     cy.addProductToCart(InventoryPage.TEST_ALL);
     cy.get(InventoryPage.SHOPPING_CART_LINK).contains(6);
-    cy.removeProductFromCart(InventoryPage.BACKPACK);
-    cy.removeProductFromCart(InventoryPage.BOLT_SHIRT);
-    cy.removeProductFromCart(InventoryPage.ONESIE);
-    cy.removeProductFromCart(InventoryPage.BIKE_LIGHT);
-    cy.removeProductFromCart(InventoryPage.FLEECE_JACKET);
-    cy.removeProductFromCart(InventoryPage.TEST_ALL);
+    cy.removeProductFromCart(InventoryPage.BACKPACK, "inventory");
+    cy.removeProductFromCart(InventoryPage.BOLT_SHIRT, "inventory");
+    cy.removeProductFromCart(InventoryPage.ONESIE, "inventory");
+    cy.removeProductFromCart(InventoryPage.BIKE_LIGHT, "inventory");
+    cy.removeProductFromCart(InventoryPage.FLEECE_JACKET, "inventory");
+    cy.removeProductFromCart(InventoryPage.TEST_ALL, "inventory");
     cy.get(InventoryPage.SHOPPING_CART_LINK).should("have.text", "");
   });
 

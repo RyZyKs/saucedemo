@@ -30,7 +30,8 @@ declare global {
     interface Chainable {
       login(username: string, password: string): Chainable<void>;
       addProductToCart(productName: string): Chainable<void>;
-      removeProductFromCart(productName: string): Chainable<void>;
+      removeProductFromCart(productName: string, page: string): Chainable<void>;
+      checkIfProductIsListedOnTheList(product: string): Chainable<void>;
     }
   }
 }
@@ -48,7 +49,16 @@ Cypress.Commands.add("addProductToCart", (productName: string) => {
   cy.get(`[data-test="remove-${productName}"]`).should("be.visible");
 });
 
-Cypress.Commands.add("removeProductFromCart", (productName: string) => {
-  cy.get(`[data-test="remove-${productName}"]`).click();
-  cy.get(`[data-test="add-to-cart-${productName}"]`).should("be.visible");
+Cypress.Commands.add("removeProductFromCart",(productName: string, page: string) => {
+    if (page === "inventory") {
+      cy.get(`[data-test="remove-${productName}"]`).click();
+      cy.get(`[data-test="add-to-cart-${productName}"]`).should("be.visible");
+    } else if (page === "cart") {
+      cy.get(`[data-test="remove-${productName}"]`).click();
+      cy.get(`[data-test="remove-${productName}"]`).should('not.exist');
+    }
+});
+
+Cypress.Commands.add("checkIfProductIsListedOnTheList", (product: string) => {
+    cy.get(".inventory_item_name").should("be.visible").and("contain", product);
 });
