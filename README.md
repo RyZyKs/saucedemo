@@ -25,13 +25,13 @@ U can also trigger CI manually
 $ git clone https://github.com/RyZyKs/saucedemo.git
 $ cd saucedemo
 ```
-When repository is ready, and you open it via your IDE - it should automatically ask you to install dependencies, click install.
+When repository is ready and you open it via your IDE - it should automatically ask you to install dependencies, click install.
 You can also do it manually:
 - install the dependencies:
 ```sh
 $ npm install
 ```
-Initialation of the test run is very easy, just put the following commands into the terminal:
+Initialisation of the test run is very easy, just put the following commands into the terminal:
 - example how to run the tests:
 ```sh
 $ npx cypress run 
