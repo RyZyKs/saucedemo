@@ -5,7 +5,7 @@ import CheckoutStepOnePage from "../support/pageObjects/CheckoutStepOnePage";
 import CheckoutStepTwoPage from "../support/pageObjects/CheckoutStepTwoPage";
 import CheckoutCompletePage from "../support/pageObjects/CheckoutCompletePage";
 
-describe("Checkout Step Two Suite", () => {
+describe("Checkout Complete Suite", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.fixture("users.json").then((users) => {
@@ -15,7 +15,7 @@ describe("Checkout Step Two Suite", () => {
     });
   });
 
-  it("Add product to cart and check overview, then remove items", () => {
+  it("Complete the checkout", () => {
     cy.fixture("products.json").then((products) => {
       const backpack = products.backpack;
       const bikeLight = products.bikeLight;

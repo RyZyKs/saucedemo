@@ -2,6 +2,10 @@
   "name": "saucedemo",
   "version": "1.0.0",
   "main": "cypress.config.js",
+  "engines": {
+    "node": "20.6.1",
+    "npm": "9.8.1"
+  }, 
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

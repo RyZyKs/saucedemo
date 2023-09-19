@@ -1,5 +1,4 @@
 import InventoryPage from "../support/pageObjects/InventoryPage";
-import CartPage from "../support/pageObjects/CartPage";
 import burgerMenu from "../support/pageObjects/burgerMenu";
 
 describe("Cart Test Suite", () => {
